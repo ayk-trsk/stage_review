@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      customer: 会員
+      admin: 管理者
+      genre: ジャンル
+    attributes:
+      customer:
+        email: メールアドレス
+        password: パスワード
+        name: ユーザーネーム
+      admin:
+        email: メールアドレス
+        password: パスワード
+      genre:
+        name: ジャンル名
