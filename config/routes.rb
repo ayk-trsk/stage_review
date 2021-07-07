@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
+    resources :stages, except: [:destroy]
   end
 
   #以下管理者のルーティング

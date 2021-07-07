@@ -1,0 +1,15 @@
+<div class="container">
+  <h5 class='offset-md-2 page_title my-4'>公演一覧</h5>
+    <% @stages.each do |stage| %>
+      <div class="row justify-content-center d-flex flex-column flex-md-row py-3 mb-2 bg-light col-md-10 mx-auto">
+        <div class="col-md-6 mr-3"><%= link_to stage.name, stage_path(stage) %></div>
+        <div class="col-md-3 mr-3"><%= stage.start_date.strftime("%Y.%m.%d") %>~<%= stage.end_date.strftime("%Y.%m.%d") %></div>
+        <div class="col-md-2">★★★★★</div>
+      </div>
+    <% end %>
+  <div class="row">
+    <div class="mx-auto d-flex mt-4">
+      <%= link_to "公演を新規登録する",new_stage_path, class: "btn btn-dark px-3" %>
+    </div>
+  </div>
+</div>

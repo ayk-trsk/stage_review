@@ -4,6 +4,7 @@ ja:
       customer: 会員
       admin: 管理者
       genre: ジャンル
+      stage: 公演
     attributes:
       customer:
         email: メールアドレス
@@ -14,3 +15,9 @@ ja:
         password: パスワード
       genre:
         name: ジャンル名
+      stage:
+        name: 公演名
+        start_date: 公演開始日
+        end_date: 公演終了日
+        genre: ジャンル
+        detail: 公演詳細
