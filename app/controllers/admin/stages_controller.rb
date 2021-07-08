@@ -1,4 +1,4 @@
-class Public::StagesController < ApplicationController
+class Admin::StagesController < ApplicationController
   def index
     @stages = Stage.all
   end
@@ -10,9 +10,9 @@ class Public::StagesController < ApplicationController
   def create
     @stage = Stage.new(stage_params)
     if @stage.save
-      redirect_to stage_path(@stage)
+      redirect_to admin_stage_path(@stage)
     else
-      render 'new'
+      render "admin/stages/new"
     end
   end
 
@@ -27,10 +27,16 @@ class Public::StagesController < ApplicationController
   def update
     @stage = Stage.find(params[:id])
     if @stage.update(stage_params)
-      redirect_to stage_path
+      redirect_to admin_stage_path
     else
-      render 'edit'
+      render "admin/stages/edit"
     end
+  end
+
+  def destroy
+    @stage = Stage.find(params[:id])
+    @stage.destroy
+    redirect_to admin_stages_path
   end
 
   private

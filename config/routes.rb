@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :stages
   end
 end
