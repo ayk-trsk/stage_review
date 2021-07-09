@@ -1,0 +1,13 @@
+<!--星評価 stages/showで使用-->
+<script>
+  $('#star-rate-<%= stage.id %>').empty();
+    $('#star-rate-<%= stage.id %>').raty({
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      half: true,
+      readOnly: true,
+      score: <%= stage.reviews.average(:rate).to_f.round(1) %>,
+      //平均点を算出し、round関数で切り上げ
+    });
+</script>

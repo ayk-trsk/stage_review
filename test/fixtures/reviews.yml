@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  stage_id: 1
+  title: MyString
+  rate: 1.5
+  body: MyText
+  date: 2021-07-08
+  place: MyString
+
+two:
+  user_id: 1
+  stage_id: 1
+  title: MyString
+  rate: 1.5
+  body: MyText
+  date: 2021-07-08
+  place: MyString

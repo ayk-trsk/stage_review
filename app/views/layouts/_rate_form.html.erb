@@ -1,0 +1,10 @@
+<!--星評価 stages/newで使用-->
+<script>
+    $('#rating-form').raty({
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'review[rate]',
+        half: true
+    });
+</script>

@@ -1,6 +1,12 @@
 class Public::StagesController < ApplicationController
   def index
     @stages = Stage.all
+    if params[:genre_id]
+      @genre = Genre.find(params[:genre_id])
+      @stages = Stage.where(genre_id: params[:genre_id]).order(start_date: :desc).all
+    else
+      @stages = Stage.order(start_date: :desc).all
+    end
   end
 
   def new

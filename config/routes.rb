@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :stages, except: [:destroy]
+    resources :reviews
   end
 
   #以下管理者のルーティング
@@ -18,5 +19,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :stages
+    resources :reviews, only: [:index, :show, :edit, :update, :destroy]
   end
 end
