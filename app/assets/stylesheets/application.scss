@@ -17,6 +17,10 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+body{
+    background-color: #f4f1de;
+}
+
  #error_explanation {
   color: #e07a5f;
  }
@@ -33,9 +37,14 @@
     content: " *";
 }
 
+.review-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .rating-score{
     color: #f2cc8f;
-    font-size: 24px;
+    font-size: 22px;
     margin: 0 10px;
 }
 
