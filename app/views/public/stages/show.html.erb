@@ -10,7 +10,7 @@
       <div class="d-flex align-items-center border-bottom">
         <div id="star-rate-<%= @stage.id %>"></div>
         <div class="rating-score"><%= @stage.reviews.average(:rate).to_f.round(1) %></div>
-        <%= link_to reviews_path do %>
+        <%= link_to reviews_path(stage_id: @stage.id) do %>
           <div>全<%= @stage.reviews.count %>件</div>
         <% end %>
       </div>

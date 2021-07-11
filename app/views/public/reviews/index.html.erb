@@ -5,27 +5,9 @@
     <h5 class='offset-md-2 page_title my-4'>レビュー一覧</h5>
   <% end %>
   <div class="row">
-    <% @reviews.each do |review| %>
-      <div class="col-md-8 mx-auto mt-3 bg-white p-4">
-        <div>
-          <%= link_to review.user.name %>さん</br>
-          <%= review.created_at.strftime("%Y年%-m月%-d日") %>
-        </div>
-        <% unless params[:stage_id] %>
-        <div class="mt-2"><strong><%= link_to review.stage.name, stage_path(review.stage_id) %></strong></div>
-        <% end %>
-        <div class="d-flex align-items-center mt-1">
-          <div id="star-rate-<%= review.id %>"></div>
-          <div class="rating-score"><%= review.rate %></div>
-        </div>
-        <div class="review-title mt-2"><%= review.title %></div>
-        <div class="mt-2"><%= review.body %></div>
-        <div class="mt-2 border-top">
-          
-        </div>
-      </div>
-      <%= render 'public/reviews/rate_result', review: review %>
-    <% end %>
+    <div class="col-md-8 mx-auto bg-white">
+      <%= render 'public/reviews/index', reviews: @reviews %>
+    </div>
   </div>
 </div>
 

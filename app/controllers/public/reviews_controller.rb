@@ -1,11 +1,10 @@
 class Public::ReviewsController < ApplicationController
   def index
-    @reviews = Review.all
     if params[:stage_id]
       @stage = Stage.find(params[:stage_id])
       @reviews = Review.where(stage_id: params[:stage_id]).order(created_at: :desc).all
     else
-      @reviews = Review.order(created_at: :desc).all
+      @reviews = Review.where.not(title: [nil, '']).order(created_at: :desc).all
     end
   end
 

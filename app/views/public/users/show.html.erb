@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <% if @user.is_deleted == true %>
+      <p class="mx-auto mt-5">こちらのユーザーは退会しています。</p>
+    <% else %>
+      <div class="col-md-8 mx-auto mt-5 bg-white p-4">
+        <div class="d-flex mb-3">
+          <div class="user-image"><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg" %></div>
+          <div class="ml-3">
+            <%= @user.name %>
+            <p class="small text-secondary mt-1">フォロー　フォロワー</p>
+            <p><%= @user.introduction %></p>
+          </div>
+          <div class="ml-auto">
+            <%= link_to "プロフィール編集", edit_user_path, class: "btn btn-outline-dark btn-sm" %>
+          </div>
+        </div>
+        <ul class="nav nav-pills nav-justified" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="item1-tab" data-toggle="tab" href="#item1" role="tab" aria-controls="item1" aria-selected="true"><%= @user.reviews.count %> レビュー</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="item2-tab" data-toggle="tab" href="#item2" role="tab" aria-controls="item2" aria-selected="false">見たい</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
+            <%= render 'public/reviews/index', reviews: @reviews %>
+          </div>
+          <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">This is a text of item#2.</div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

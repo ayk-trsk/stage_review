@@ -5,4 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reviews
+  attachment :image
+
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+  def inactive_message
+    "退会済みのアカウントです。"
+  end
 end

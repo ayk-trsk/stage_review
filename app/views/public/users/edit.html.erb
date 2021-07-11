@@ -1,0 +1,28 @@
+<div class="container">
+  <h5 class='offset-md-2 page_title my-4'>プロフィール編集</h5>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 mx-auto">
+      <%= form_with model: @user, url: user_path(@user), local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :image, "プロフィール画像", class: "badge" %></br>
+          <%= f.attachment_field :image, class: "form-control-file" %>
+        </div>
+         <div class="form-group">
+          <%= f.label :name, "ユーザーネーム", class: "badge" %></br>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :introduction, "自己紹介", class: "badge" %></br>
+          <%= f.text_area :introduction, :rows => "5", class: "form-control" %>
+        </div>
+        <div class="form-group d-flex justify-content-center">
+          <%= f.submit "更新する", class: 'btn btn-dark mr-3 col-3' %>
+          <%= link_to "キャンセル", user_path, class: 'btn btn-dark col-3' %>
+        </div>
+        <div class="form-group d-flex justify-content-center mt-5">
+          <%= link_to "退会する", quit_user_path, class: 'btn btn-outline-dark btn-sm col-3' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

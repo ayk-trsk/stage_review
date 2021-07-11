@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StageReview</title>
+    <title>STAGE REVIEW</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +11,8 @@
 
   <body>
     <header><%= render 'layouts/header' %></header>
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
     <%= yield %>
     <footer>©️STAGE REVIEW</footer>
   </body>

@@ -1,0 +1,26 @@
+    <% reviews.each do |review| %>
+      <div class="p-4 border-bottom">
+        <% unless current_page?("/admin/users/#{review.user.id}") %>
+          <div class="d-flex">
+            <div class="user-image"><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg" %></div>
+            <div class="ml-3">
+              <%= link_to review.user.name, admin_user_path(review.user) %>さん
+              <p class="small text-secondary mt-1"><%= review.created_at.strftime("%Y年%-m月%-d日") %></p>
+            </div>
+          </div>
+        <% end %>
+        <% unless params[:stage_id] %>
+        <div class="mt-1"><strong><%= link_to review.stage.name, admin_stage_path(review.stage_id) %></strong></div>
+        <% end %>
+        <div class="d-flex align-items-center mt-1">
+          <div id="star-rate-<%= review.id %>"></div>
+          <div class="rating-score"><%= review.rate %></div>
+        </div>
+        <div class="review-title mt-2"><%= review.title %></div>
+        <div class="mt-2"><%= review.body %></div>
+        <div class="mt-2">
+
+        </div>
+      </div>
+      <%= render 'public/reviews/rate_result', review: review %>
+    <% end %>
