@@ -56,6 +56,26 @@ body{
     margin: 0 10px;
 }
 
+.bookmark-btn {
+  color: #fff;
+  background-color: #e07a5f;
+  border-color: #e07a5f;
+}
+
+.bookmark-btn:hover {
+  color: #fff;
+}
+
+.bookmarked-btn {
+  color: #e07a5f;
+  background-color: transparent;
+  border-color: #e07a5f;
+}
+
+.bookmarked-btn:hover {
+  color: #e07a5f;
+}
+
 footer {
   width: 100%;
   height: 60px;

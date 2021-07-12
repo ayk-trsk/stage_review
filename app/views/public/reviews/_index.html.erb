@@ -1,6 +1,6 @@
     <% reviews.each do |review| %>
       <div class="p-4 border-bottom">
-        <% unless current_page?(controller: 'public/users', action: 'show') %>
+        <% unless current_page?("/users/#{review.user.id}") %>
           <div class="d-flex">
             <div class="user-image"><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg" %></div>
             <div class="ml-3">

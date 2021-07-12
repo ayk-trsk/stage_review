@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/quit'
-  end
-
 
   devise_for :users, controllers: {
     sessions: 'public/users/sessions',
@@ -14,7 +8,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    resources :stages, except: [:destroy]
+    resources :stages, except: [:destroy] do
+      resource :bookmarks, only: [:create, :destroy]
+    end
     resources :users, only: [:show, :edit, :update] do
       member do
         get 'quit'
