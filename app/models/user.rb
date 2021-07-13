@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :reviews
   has_many :bookmarks, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   attachment :image
 
   def active_for_authentication?

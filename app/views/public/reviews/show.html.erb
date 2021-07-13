@@ -17,6 +17,22 @@
       </div>
       <div class="review-title mt-2"><%= @review.title %></div>
       <div class="mt-2"><%= @review.body %></div>
+      <div class="mt-2">
+        <div id="favorite-btn_<%= @review.id %>" class="mt-2">
+          <%= render 'public/favorites/favorite-btn', review: @review %>
+        </div>
+      </div>
+      <div class="comments mt-3">
+        <%= render 'public/comments/index', review: @review %>
+      </div>
+      <% if user_signed_in? %>
+        <%= form_with model:[@review,@comment] do |f| %>
+          <div class="mt-2 form-row align-items-center d-flex justify-content-center">
+            <%= f.text_area :content, :rows => 1, :placeholder => "コメントする", class: "form-control col-10" %>
+            <%= f.submit '送信', class: "btn btn-dark ml-3" %>
+          </div>
+        <% end %>
+      <% end %>
       <% if user_signed_in? && @review.user_id == current_user.id %>
       <div class="mt-2">
           <i class="fas fa-pencil-alt"></i><%= @review.created_at.strftime("%Y年%-m月%-d日") %> 投稿</br>

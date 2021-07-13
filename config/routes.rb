@@ -17,7 +17,10 @@ Rails.application.routes.draw do
         patch 'withdraw'
       end
     end
-    resources :reviews
+    resources :reviews do
+      resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
   end
 
   #以下管理者のルーティング
