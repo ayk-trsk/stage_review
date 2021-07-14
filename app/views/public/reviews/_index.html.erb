@@ -2,9 +2,19 @@
       <div class="p-4 border-bottom">
         <% unless current_page?("/users/#{review.user.id}") %>
           <div class="d-flex">
-            <div class="user-image"><%= attachment_image_tag @user, :image, format: 'jpeg', fallback: "no_image.jpg" %></div>
+            <div class="user-image">
+              <% if review.user.is_deleted == false %>
+                <%= attachment_image_tag review.user, :image, format: 'jpeg', fallback: "no_image.jpg" %>
+              <% else %>
+                <%= image_tag('no_image.jpg') %>
+              <% end %>
+            </div>
             <div class="ml-3">
-              <%= link_to review.user.name, user_path(review.user) %>さん
+              <% if review.user.is_deleted == false %>
+                <%= link_to review.user.name, user_path(review.user) %>さん
+              <% else %>
+                退会済みユーザー
+              <% end %>
               <p class="small text-secondary mt-1"><%= review.created_at.strftime("%Y年%-m月%-d日") %></p>
             </div>
           </div>
@@ -17,9 +27,17 @@
           <div class="rating-score"><%= review.rate %></div>
         </div>
         <div class="review-title mt-2"><%= link_to review.title, review_path(review) %></div>
-        <div class="mt-2"><%= review.body %></div>
-        <div class="mt-2">
-
+        <div class="mt-2"><%=simple_format truncate(review.body, length: 200) { link_to "続きを読む", review_path(review)} %></div>
+        <div class="mt-2 d-flex">
+          <div id="favorite-btn_<%= review.id %>">
+            <%= render 'public/favorites/favorite-btn', review: review %>
+          </div>
+          <div class="text-secondary ml-3">
+            <i class="far fa-comment-alt"></i> <%= review.comments.count %>
+            <%if user_signed_in? && review.user_id != current_user.id %>
+              <%= link_to "コメントする", review_path(review) %>
+            <% end %>
+          </div>
         </div>
       </div>
       <%= render 'public/reviews/rate_result', review: review %>

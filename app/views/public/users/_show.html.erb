@@ -1,0 +1,20 @@
+<div class="d-flex mb-3">
+  <div class="user-image"><%= attachment_image_tag user, :image, format: 'jpeg', fallback: "no_image.jpg" %></div>
+  <div class="ml-3">
+    <%= user.name %>
+    <p class="small text-secondary mt-1">
+      <%= link_to user_followings_path(user) do %><%= user.followings.where(is_deleted: false).count %><% end %> フォロー
+      <%= link_to user_followers_path(user) do %><%= user.followers.where(is_deleted: false).count %><% end %> フォロワー
+    </p>
+    <p><%= user.introduction %></p>
+  </div>
+  <div class="ml-auto">
+    <% if user_signed_in? && user != current_user %>
+      <div id="follow_btn">
+          <%= render "public/relationships/follow-btn", user: user %>
+      </div>
+    <% elsif user_signed_in? && user == current_user %>
+      <%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-outline-dark btn-sm" %>
+    <% end %>
+  </div>
+</div>

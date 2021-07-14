@@ -1,0 +1,21 @@
+<% @users.each do |user| %>
+  <div class="p-4 border-bottom">
+    <div class="d-flex mb-3">
+      <div class="user-image"><%= attachment_image_tag user, :image, format: 'jpeg', fallback: "no_image.jpg" %></div>
+      <div class="ml-3">
+        <%= link_to user.name, user_path(user) %>
+        <p class="small text-secondary mt-1">
+          <%= user.followings.where(is_deleted: false).count %> フォロー
+          　<%= user.followers.where(is_deleted: false).count %> フォロワー
+        </p>
+      </div>
+      <div class="ml-auto">
+        <% if user_signed_in? && user != current_user %>
+          <div id="follow_btn">
+              <%= render "public/relationships/follow-btn", user: user %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

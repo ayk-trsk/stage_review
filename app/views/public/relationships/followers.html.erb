@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto mt-5 bg-white p-4">
+      <%= render 'public/users/show', user: @user %>
+      <h5>Follower Users</h5>
+      <% if @users.exists? %>
+        <%= render 'public/users/index', users: @users %>
+      <% else %>
+        <p>ユーザーはいません</p>
+      <% end %>
+    </div>
+  </div>
+</div>
