@@ -38,6 +38,12 @@ class Public::StagesController < ApplicationController
     end
   end
 
+  def search
+    @stages = Stage.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   private
 
   def stage_params
