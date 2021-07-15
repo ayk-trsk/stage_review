@@ -1,0 +1,11 @@
+<div class="container">
+  <h5 class='offset-md-2 page_title my-4'>検索ワード '<%= @value %>'</h5>
+  <% if @model == 'stage' %>
+    <%= render 'admin/stages/index', stages: @stages %>
+  <% else %>
+  <div class="row col-md-10 mx-auto">
+    <%= render 'admin/users/index', users: @users %>
+  </div>
+  <% end %>
+  </div>
+</div>

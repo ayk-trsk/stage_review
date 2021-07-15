@@ -37,5 +37,6 @@ Rails.application.routes.draw do
     resources :stages
     resources :users, only: [:index, :show, :edit, :update]
     resources :reviews, only: [:index, :show, :edit, :update, :destroy]
+    get 'search' => 'search#search'
   end
 end
