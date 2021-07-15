@@ -9,8 +9,4 @@ class Stage < ApplicationRecord
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?
   end
-
-  def self.search(keyword)
-  where("name like?", "%#{keyword}%")
-  end
 end

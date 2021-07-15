@@ -39,8 +39,13 @@ class Public::StagesController < ApplicationController
   end
 
   def search
-    @stages = Stage.search(params[:keyword])
-    @keyword = params[:keyword]
+    split_keyword = params[:keyword].split(/[[:blank:]]+/)
+    @stages = []
+    split_keyword.each do |keyword|
+      next if keyword == ""
+      @stages += Stage.where('name LIKE(?)', "%#{keyword}%")
+    end
+    @stages.uniq! #重複した商品を削除する
     render "index"
   end
 
