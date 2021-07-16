@@ -28,7 +28,7 @@
         </div>
         <div class="review-title mt-2"><%= link_to review.title, review_path(review) %></div>
         <div class="mt-2"><%=simple_format truncate(review.body, length: 200) { link_to "続きを読む", review_path(review)} %></div>
-        <div class="mt-2 d-flex">
+        <div class="mt-2 d-flex col-12">
           <div id="favorite-btn_<%= review.id %>">
             <%= render 'public/favorites/favorite-btn', review: review %>
           </div>
@@ -36,6 +36,13 @@
             <i class="far fa-comment-alt"></i> <%= review.comments.count %>
             <%if user_signed_in? && review.user_id != current_user.id %>
               <%= link_to "コメントする", review_path(review) %>
+            <% end %>
+          </div>
+          <div class="ml-auto">
+            <%if user_signed_in? && review.user_id == current_user.id %>
+              <%= link_to edit_review_path(review) do %>
+              <i class="fas fa-pencil-alt"></i> レビューを編集
+              <% end %>
             <% end %>
           </div>
         </div>
