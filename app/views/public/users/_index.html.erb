@@ -1,6 +1,6 @@
 <% @users.each do |user| %>
-  <div class="p-4 border-bottom">
-    <div class="d-flex mb-3">
+  <div class="p-2 border-bottom">
+    <div class="d-flex">
       <div class="user-image"><%= attachment_image_tag user, :image, format: 'jpeg', fallback: "no_image.jpg" %></div>
       <div class="ml-3">
         <%= link_to user.name, user_path(user) %>
@@ -19,3 +19,4 @@
     </div>
   </div>
 <% end %>
+<div class="mt-3 d-flex justify-content-center"><%= paginate @users %></div>

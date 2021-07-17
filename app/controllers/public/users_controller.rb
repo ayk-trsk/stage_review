@@ -2,8 +2,8 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @reviews = Review.where(user_id: params[:id]).order(created_at: :desc).all
-    @bookmarks = Bookmark.where(user_id: @user.id).order(created_at: :desc).all
+    @reviews = Review.where(user_id: params[:id]).order(created_at: :desc).all.page(params[:page])
+    @bookmarks = Bookmark.where(user_id: @user.id).order(created_at: :desc).all.page(params[:page])
   end
 
   def edit

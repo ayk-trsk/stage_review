@@ -94,3 +94,19 @@ footer {
   color: #3d405b;
   padding-top: 30px;
 }
+
+/* ページネーションをカスタマイズ*/
+.pagination>li>a {
+  border: none;
+  color: #3d405b;
+}
+
+.page-item.active .page-link{
+  background-color: #81b29a;
+}
+
+.pagination>li>a:hover {
+  color: #3d405b;
+}
+
+

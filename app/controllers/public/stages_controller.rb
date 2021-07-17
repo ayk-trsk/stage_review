@@ -2,9 +2,9 @@ class Public::StagesController < ApplicationController
   def index
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @stages = Stage.where(genre_id: params[:genre_id]).order(start_date: :desc).all
+      @stages = Stage.where(genre_id: params[:genre_id]).order(start_date: :desc).all.page(params[:page])
     else
-      @stages = Stage.order(start_date: :desc).all
+      @stages = Stage.order(start_date: :desc).all.page(params[:page])
     end
   end
 
@@ -46,6 +46,7 @@ class Public::StagesController < ApplicationController
       @stages += Stage.where('name LIKE(?)', "%#{keyword}%")
     end
     @stages.uniq! #重複した商品を削除する
+    @stages = Kaminari.paginate_array(@stages).page(params[:page])
     render "index"
   end
 
