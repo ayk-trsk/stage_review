@@ -69,6 +69,9 @@ gem "refile-mini_magick"
 gem 'kaminari','~> 1.2.1'
 gem 'jquery-rails'
 gem 'rails-i18n', '~> 5.1'
-gem 'dotenv-rails'
 gem 'cancancan'
 gem 'rubocop'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
