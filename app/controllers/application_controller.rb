@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     case resource
+    when User
+      user_path(resource)
     when Admin
       admin_reviews_path
     end
@@ -11,6 +13,8 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     case resource
+    when :user
+      root_path
     when :admin
       new_admin_session_path
     end
