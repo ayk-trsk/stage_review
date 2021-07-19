@@ -2,8 +2,15 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @reviews = Review.where(user_id: params[:id]).order(created_at: :desc).all.page(params[:page])
-    @bookmarks = Bookmark.where(user_id: @user.id).order(created_at: :desc).all.page(params[:page])
+    @bookmarks = Bookmark.where(user_id: @user.id).order(created_at: :desc).page(params[:page])
+    if params[:sort]
+      selection = params[:sort]
+      reviews = Review.sort(selection)
+    else
+      reviews = Review.order(created_at: :desc)
+    end
+    my_reviews = reviews.select{ |review| review.user_id == @user.id }
+    @reviews = Kaminari.paginate_array(my_reviews).page(params[:page])
   end
 
   def edit

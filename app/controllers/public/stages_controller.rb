@@ -2,9 +2,9 @@ class Public::StagesController < ApplicationController
   def index
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @stages = Stage.where(genre_id: params[:genre_id]).order(start_date: :desc).all.page(params[:page])
+      @stages = Stage.where(genre_id: params[:genre_id]).order(start_date: :desc).page(params[:page])
     else
-      @stages = Stage.order(start_date: :desc).all.page(params[:page])
+      @stages = Stage.order(start_date: :desc).page(params[:page])
     end
   end
 

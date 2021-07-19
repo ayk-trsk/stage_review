@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_reviews, through: :favorites, source: :review
+  has_many :commented_reviews, through: :comments, source: :review
   attachment :image
 
   # 退会ユーザーをログインさせない

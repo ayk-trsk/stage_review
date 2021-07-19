@@ -15,6 +15,22 @@
         </ul>
         <div class="tab-content">
           <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
+              <div class="btn-toolbar mt-4">
+                <div class="btn-group ml-auto">
+                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    並び替え
+                  </button>
+                  <div class="dropdown-menu">
+                    <%= link_to "投稿が新しい順", user_path(sort: 'new'), class: "dropdown-item" %>
+                    <%= link_to "投稿が古い順", user_path(sort: 'old'), class: "dropdown-item" %>
+                    <%= link_to "観劇日が新しい順", user_path(sort: 'watched'), class: "dropdown-item" %>
+                    <%= link_to "観劇日が古い順", user_path(sort: 'watched_a'), class: "dropdown-item" %>
+                    <%= link_to "評価が高い順", user_path(sort: 'rate'), class: "dropdown-item" %>
+                    <%= link_to "いいねが多い順", user_path(sort: 'favorites'), class: "dropdown-item" %>
+                    <%= link_to "コメントが多い順", user_path(sort: 'comments'), class: "dropdown-item" %>
+                  </div>
+                </div>
+              </div>
             <%= render 'public/reviews/index', reviews: @reviews %>
           </div>
           <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
