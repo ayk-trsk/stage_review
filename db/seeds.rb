@@ -8,7 +8,7 @@
 
 Admin.create!(
   email: 'admin@example.com',
-  encrypted_password: 'admins',
+  password: 'admins',
 )
 
 Genre.create!(
