@@ -15,22 +15,12 @@
         </ul>
         <div class="tab-content">
           <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
-              <div class="btn-toolbar mt-4">
-                <div class="btn-group ml-auto">
-                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    並び替え
-                  </button>
-                  <div class="dropdown-menu">
-                    <%= link_to "投稿が新しい順", user_path(sort: 'new'), class: "dropdown-item" %>
-                    <%= link_to "投稿が古い順", user_path(sort: 'old'), class: "dropdown-item" %>
-                    <%= link_to "観劇日が新しい順", user_path(sort: 'watched'), class: "dropdown-item" %>
-                    <%= link_to "観劇日が古い順", user_path(sort: 'watched_a'), class: "dropdown-item" %>
-                    <%= link_to "評価が高い順", user_path(sort: 'rate'), class: "dropdown-item" %>
-                    <%= link_to "いいねが多い順", user_path(sort: 'favorites'), class: "dropdown-item" %>
-                    <%= link_to "コメントが多い順", user_path(sort: 'comments'), class: "dropdown-item" %>
-                  </div>
-                </div>
-              </div>
+            <div class="text-right mt-3">
+              <%= form_with model: @review, url: user_path, method: :get, local: true do |f| %>
+                <%= f.select :sort, options_for_select({"投稿が新しい順": "new", "投稿が古い順": "old", "観劇日が新しい順": "watched", "観劇日が古い順": "watched_a", "評価が高い順": "rate", "いいねが多い順": "favorites", "コメントが多い順": "comments" },params[:sort]), class: "form-control" %>
+                <%= f.submit "並び替え" %>
+              <% end %>
+            </div>
             <%= render 'public/reviews/index', reviews: @reviews %>
           </div>
           <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
