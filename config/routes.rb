@@ -25,6 +25,11 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     get 'search' => 'stages#search'
+
+    resources :contacts, only: [:new, :create]
+    post 'contacts/confirm' => 'contacts#confirm'
+    post 'contacts/back' => 'contacts#back'
+    get 'contacts/done' => 'contacts#done'
   end
 
   #以下管理者のルーティング
@@ -38,5 +43,6 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :reviews, only: [:index, :show, :edit, :update, :destroy]
     get 'search' => 'search#search'
+    resources :contacts, only: [:index, :show]
   end
 end

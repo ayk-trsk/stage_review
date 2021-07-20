@@ -2,9 +2,9 @@ class Admin::ReviewsController < ApplicationController
   def index
     if params[:stage_id]
       @stage = Stage.find(params[:stage_id])
-      @reviews = Review.where(stage_id: params[:stage_id]).order(created_at: :desc).all
+      @reviews = Review.where(stage_id: params[:stage_id]).order(created_at: :desc)
     else
-      @reviews = Review.where.not(title: [nil, '']).order(created_at: :desc).all
+      @reviews = Review.where.not(title: [nil, '']).order(created_at: :desc)
     end
   end
 
