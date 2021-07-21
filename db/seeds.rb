@@ -8,33 +8,33 @@
 
 Admin.create!(
   email: 'admin@example.com',
-  password: 'admins',
+  password: 'admins'
 )
 
 Genre.create!(
-  name: 'ストレートプレイ',
+  name: 'ストレートプレイ'
 )
 
 Genre.create!(
-  name: 'ミュージカル',
+  name: 'ミュージカル'
 )
 
 Genre.create!(
-  name: 'お笑い',
+  name: 'お笑い'
 )
 
 Genre.create!(
-  name: '2.5次元舞台',
+  name: '2.5次元舞台'
 )
 
 Genre.create!(
-  name: '落語・寄席',
+  name: '落語・寄席'
 )
 
 Genre.create!(
-  name: '伝統芸能',
+  name: '伝統芸能'
 )
 
 Genre.create!(
-  name: 'ダンス・パフォーマンス',
+  name: 'ダンス・パフォーマンス'
 )

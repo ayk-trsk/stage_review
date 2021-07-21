@@ -6,9 +6,7 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.review_id = @review.id
     @comment.user_id = current_user.id
-    unless @comment.save
-      render 'error'
-    end
+    render 'error' unless @comment.save
   end
 
   def destroy

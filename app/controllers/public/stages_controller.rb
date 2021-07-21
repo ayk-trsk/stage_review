@@ -43,9 +43,10 @@ class Public::StagesController < ApplicationController
     @stages = []
     split_keyword.each do |keyword|
       next if keyword == ""
+
       @stages += Stage.where('name LIKE(?)', "%#{keyword}%")
     end
-    @stages.uniq! #重複した商品を削除する
+    @stages.uniq! # 重複した商品を削除する
     @stages = Kaminari.paginate_array(@stages).page(params[:page])
     render "index"
   end

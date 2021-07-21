@@ -1,0 +1,64 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  # 除外するディレクトリ（自動生成されたファイル）
+  # デフォルト設定にある"vendor/**/*"が無効化されないように記述
+  Exclude:
+    - bin/*
+    - lib/*
+    - config/**/*
+    - db/schema.rb
+    - db/migrate/*
+    - vendor/**/*
+    - test/**/*
+    - Gemfile
+  # Rails向けのRails copsを実行。"rubocop -R"と同じ
+  Rails:
+    enabled: true
+
+# "Missing top-level class documentation comment."を無効
+Style/Documentation:
+  Enabled: false
+
+# コメントにはアスキー記号のみを使用してください
+AsciiComments:
+  Enabled: false
+
+# "Prefer single-quoted strings when you don't need string interpolation or special symbols."を無効
+Style/StringLiterals:
+  Enabled: false
+
+# "Line is too long"を無効
+Metrics/LineLength:
+  Enabled: false
+
+# 並び替え機能の記述が引っかかるため
+Etrics/MethodLength:
+  Enabled: true
+  Max: 16
+
+# 並び替え機能の記述が引っかかるため
+Metrics/CyclomaticComplexity:
+  Enabled: true
+  Max: 10
+
+# "frozen_string_literal: true"を無効
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# namespaceが引っかかるため
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# 並び替え機能の記述が引っかかるため
+Metrics/AbcSize:
+  Enabled: true
+  Max: 29
+
+# if~else~endの方がひと目で分かりやすいと思うためfalse
+Style/GuardClause:
+  Enabled: false
+
+# devise_helperの関係のため
+Naming/HeredocDelimiterNaming:
+  Enabled: false

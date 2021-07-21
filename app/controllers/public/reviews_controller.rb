@@ -3,12 +3,10 @@ class Public::ReviewsController < ApplicationController
     if params[:stage_id]
       @stage = Stage.find(params[:stage_id])
       @reviews = Review.where(stage_id: params[:stage_id]).order(created_at: :desc).page(params[:page])
+    elsif params[:sort]
+      @reviews = Review.where.not(title: [nil, '']).order(params[:sort]).page(params[:page])
     else
-      if params[:sort]
-        @reviews = Review.where.not(title: [nil, '']).order(params[:sort]).page(params[:page])
-      else
-        @reviews = Review.where.not(title: [nil, '']).order(created_at: :desc).page(params[:page])
-      end
+      @reviews = Review.where.not(title: [nil, '']).order(created_at: :desc).page(params[:page])
     end
   end
 
@@ -60,4 +58,3 @@ class Public::ReviewsController < ApplicationController
     params.require(:review).permit(:title, :rate, :body, :date, :place, :user_id, :stage_id)
   end
 end
-

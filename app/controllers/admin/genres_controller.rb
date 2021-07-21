@@ -8,11 +8,10 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.new(genre_params)
     if @genre.save
       flash[:notice] = "ジャンルを追加しました"
-      redirect_to request.referer
     else
       flash[:alert] = "ジャンルを入力してください"
-      redirect_to request.referer
     end
+    redirect_to request.referer
   end
 
   def edit
@@ -27,7 +26,6 @@ class Admin::GenresController < ApplicationController
       render 'edit'
     end
   end
-
 
   private
 

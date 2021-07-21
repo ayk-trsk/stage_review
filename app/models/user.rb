@@ -14,8 +14,9 @@ class User < ApplicationRecord
 
   # 退会ユーザーをログインさせない
   def active_for_authentication?
-    super && (self.is_deleted == false)
+    super && (is_deleted == false)
   end
+
   def inactive_message
     "退会済みのアカウントです。"
   end
@@ -41,4 +42,3 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 end
-
