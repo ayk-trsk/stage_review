@@ -1,12 +1,13 @@
 ja:
   activerecord:
     models:
-      customer: 会員
+      user: ユーザー
       admin: 管理者
       genre: ジャンル
       stage: 公演
+      review: レビュー
     attributes:
-      customer:
+      user:
         email: メールアドレス
         password: パスワード
         name: ユーザーネーム
@@ -21,3 +22,9 @@ ja:
         end_date: 公演終了日
         genre: ジャンル
         detail: 公演詳細
+      stage:
+        title: タイトル
+        rate: 評価
+        body: 本文
+        date: 観劇日
+        place: 観劇方法
