@@ -17,19 +17,22 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+nav{
+  background: #c6b4ae;
+}
+
 body{
-    // background-color: #f4f1de;
+    background-color: #f4f0ef;
     padding-top: 5rem;
 }
 
 a{
-    color: #81b29a;
+    color: #6c8b9d;
 }
 
 a:hover{
-    color: #e07a5f;
+    color: #c6b4ae;
     text-decoration: none;
-
 }
 
 #error_explanation {
@@ -95,25 +98,21 @@ a:hover{
 /* タブの色変更 */
 .nav-pills .nav-link.active{
   color: #fff;
-  background-color: #81b29a;
+  background-color: #c6b4ae;
   border-radius: 15px 15px 0 0;
-  border-bottom: solid 2px #81b29a;
+  border-bottom: solid 2px #c6b4ae;
 }
 
 /* タブの文字色変更 */
 .nav-pills .nav-link{
-  color: #6c757d;
+  color: #a78c82;
   border-radius: 15px 15px 0 0;
   border-bottom: solid 1px #dee2e6;
 }
 
 footer {
-  width: 100%;
-  height: 60px;
   text-align: center;
-  line-height: 60px;
-  color: #3d405b;
-  margin-top: 30px;
+  margin: 50px 0 30px 0;
 }
 
 /* ページネーションをカスタマイズ*/

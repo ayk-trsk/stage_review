@@ -1,28 +1,28 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light shadow fixed-top">
+<nav class="navbar navbar-expand-md navbar-light shadow fixed-top">
   <div class="container-xl">
     <a class="navbar-brand " href="/"> STAGE REVIEW</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="form-group form-inline my-2 my-md-0 ml-auto mr-4">
+      <form class="form-group form-inline my-2 my-md-0 ml-auto mr-4">
         <% if admin_signed_in? %>
           <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
-            <%= f.select 'search[model]', options_for_select({ "公演名" => "stage", "ユーザー名" => "user" }) %>
-            <%= f.text_field 'search[value]' %>
+            <%= f.select 'search[model]', options_for_select({ "公演名" => "stage", "ユーザー名" => "user" }), class: "form-control"%>
+            <%= f.text_field 'search[value]', class: "form-control" %>
             <%= button_tag type: "submit", class: "btn btn-dark" do %>
               <i class="fas fa-search"></i>
             <% end %>
           <% end %>
         <% else %>
           <%= form_with url: search_path, method: :get, local: true do |f| %>
-            <%= f.text_field :keyword, value: @keyword, placeholder: "公演名", class: "form-control" %>
-            <%= button_tag type: "submit", class: "btn btn-dark" do %>
+            <%= f.text_field :keyword, value: @keyword, placeholder: "公演名", class: "form-control col-10" %>
+            <%= button_tag type: "submit", class: "btn btn-dark col-2" do %>
               <i class="fas fa-search"></i>
             <% end %>
           <% end %>
         <% end %>
-      </div>
+      </form>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item mr-4"><%= link_to "レビュー一覧", reviews_path, class: "nav-link" %></li>
@@ -30,13 +30,12 @@
           <li class="nav-item mr-4"><%= link_to "マイページ", user_path(current_user), class: "nav-link" %></li>
           <li class="nav-item mr-4"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
         <% elsif admin_signed_in? %>
-          <li class="nav-item mr-4"><%= link_to "レビュー", admin_reviews_path, class: "nav-link" %></li>
           <li class="nav-item mr-4"><%= link_to "ユーザー", admin_users_path, class: "nav-link" %></li>
           <li class="nav-item mr-4"><%= link_to "公演", admin_stages_path, class: "nav-link" %></li>
           <li class="nav-item mr-4"><%= link_to "ジャンル", admin_genres_path, class: "nav-link" %></li>
+          <li class="nav-item mr-4"><%= link_to "お問い合わせ", admin_contacts_path, class: "nav-link" %></li>
           <li class="nav-item mr-4"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
         <% else %>
-          <li class="nav-item mr-4"><%= link_to "レビュー一覧", reviews_path, class: "nav-link" %></li>
           <li class="nav-item mr-4"><%= link_to "ABOUT", about_path, class: "nav-link" %></li>
           <li class="nav-item mr-4"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
           <li class="nav-item mr-4"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
