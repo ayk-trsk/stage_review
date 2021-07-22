@@ -8,13 +8,13 @@
           <%= f.label :stage_id, "公演", class: "badge" %></br>
           <%= f.select :stage_id, @stages.map{ |stage| [stage.name, stage.id] } %>
         </div>
-        <div class="form-group">
-          <%= f.label :title, "タイトル", class: "badge" %></br>
-          <%= @review.title %>
-        </div>
         <div id="rating-form">
           <%= f.label :rate, "評価", class: "badge" %></br>
           <div id="star-rate-<%= @review.id %>"></div>
+        </div>
+        <div class="form-group">
+          <%= f.label :body, "本文", class: "badge" %></br>
+          <%= @review.body %>
         </div>
         <div class="form-group mt-3">
           <%= f.label :date, "観劇日", class: "badge" %></br>
@@ -23,10 +23,6 @@
         <div class="form-group">
           <%= f.label :place, "観劇場所(方法)", class: "badge" %></br>
           <%= @review.place %>
-        </div>
-        <div class="form-group">
-          <%= f.label :body, "本文", class: "badge" %></br>
-          <%= @review.body %>
         </div>
         <div class="form-group">
           <%= f.submit "保存する", class: 'btn btn-dark mx-auto d-block' %>

@@ -12,7 +12,6 @@
         <div id="star-rate-<%= @review.id %>"></div>
         <div class="rating-score"><%= @review.rate %></div>
       </div>
-      <div class="review-title mt-2"><%= @review.title %></div>
       <div class="mt-2"><%= @review.body %></div>
       <div class="mt-4 d-flex justify-content-center">
         <%= link_to "編集する", edit_admin_review_path(@review), class: 'btn btn-dark mr-3 col-3' %>
