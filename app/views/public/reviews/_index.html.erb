@@ -26,20 +26,24 @@
           <div id="star-rate-<%= review.id %>"></div>
           <div class="rating-score"><%= review.rate %></div>
         </div>
-        <div class="review-title mt-2"><%= link_to review.title, review_path(review) %></div>
         <div class="mt-2"><%=simple_format truncate(review.body, length: 200) { link_to "続きを読む", review_path(review)} %></div>
-        <div class="mt-2 d-flex col-12">
+        <div class="small text-secondary">
+          <%if review.date.present? || review.place.present? %><i class="far fa-clipboard"></i><% end %> <%= review.date&.strftime("%Y年%-m月%-d日") %> <%= review.place %>
+        </div>
+        <div class="mt-3 d-flex">
           <div id="favorite-btn_<%= review.id %>">
             <%= render 'public/favorites/favorite-btn', review: review %>
           </div>
           <div class="text-secondary ml-3">
-            <i class="far fa-comment-alt"></i> <%= review.comments.count %>
-            <%if user_signed_in? && review.user_id != current_user.id %>
-              <%= link_to "コメントする", review_path(review) %>
+            <%= link_to review_path(review) do %>
+              <i class="far fa-comment-alt"></i> <%= review.comments.count %>
+            <% end %>
+            <% if user_signed_in? && review.user_id != current_user.id %>
+               <%= link_to "コメントする", review_path(review) %>
             <% end %>
           </div>
           <div class="ml-auto">
-            <%if user_signed_in? && review.user_id == current_user.id %>
+            <% if user_signed_in? && review.user_id == current_user.id %>
               <%= link_to edit_review_path(review) do %>
               <i class="fas fa-pencil-alt"></i> レビューを編集
               <% end %>

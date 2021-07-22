@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<% if user_signed_in? && review.user_id != current_user.id %>
   <% if review.favorited_by?(current_user) %>
     <%= link_to review_favorites_path(review), method: :delete, remote: true do %>
      <i class="fas fa-heart heart_red"></i> <%= review.favorites.count %>

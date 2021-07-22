@@ -1,41 +1,44 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 mx-auto mt-5 bg-white p-4">
-      <% unless user_signed_in? && @review.user_id == current_user.id%>
-        <div class="d-flex">
-          <div class="user-image">
-            <% if @review.user.is_deleted == false %>
-              <%= attachment_image_tag @review.user, :image, format: 'jpeg', fallback: "no_image.jpg" %>
-            <% else %>
-              <%= image_tag('no_image.jpg') %>
-            <% end %>
-          </div>
-          <div class="ml-3">
-            <% if @review.user.is_deleted == false %>
-              <%= link_to @review.user.name, user_path(@review.user) %>さん
-            <% else %>
-              退会済みユーザー
-            <% end %>
-            <p class="small text-secondary mt-1"><%= @review.created_at.strftime("%Y年%-m月%-d日") %></p>
-          </div>
+    <div class="col-md-8 mx-auto mt-3 bg-white p-4">
+      <div class="d-flex">
+        <div class="user-image">
+          <% if @review.user.is_deleted == false %>
+            <%= attachment_image_tag @review.user, :image, format: 'jpeg', fallback: "no_image.jpg" %>
+          <% else %>
+            <%= image_tag('no_image.jpg') %>
+          <% end %>
         </div>
-      <% end %>
+        <div class="ml-3">
+          <% if @review.user.is_deleted == false %>
+            <%= link_to @review.user.name, user_path(@review.user) %>さん
+          <% else %>
+            退会済みユーザー
+          <% end %>
+          <p class="small text-secondary mt-1"><%= @review.created_at.strftime("%Y年%-m月%-d日") %></p>
+        </div>
+      </div>
       <div class="mt-1"><strong><%= link_to @review.stage.name, stage_path(@review.stage_id) %></strong></div>
       <div class="d-flex align-items-center mt-1">
         <div id="star-rate-<%= @review.id %>"></div>
         <div class="rating-score"><%= @review.rate %></div>
       </div>
-      <div class="review-title mt-2"><%= @review.title %></div>
       <div class="mt-2"><%= simple_format(@review.body) %></div>
-      <div class="mt-2 small text-secondary">
-        <i class="fas fa-pencil-alt"></i><%= @review.created_at.strftime("%Y年%-m月%-d日") %> 投稿</br>
+      <div class="small text-secondary">
         <%if @review.date.present? || @review.place.present? %><i class="far fa-clipboard"></i><% end %> <%= @review.date&.strftime("%Y年%-m月%-d日") %> <%= @review.place %>
       </div>
-      <div class="mt-2 d-flex">
+      <div class="mt-3 d-flex">
         <div id="favorite-btn_<%= @review.id %>" >
           <%= render 'public/favorites/favorite-btn', review: @review %>
         </div>
         <div class="text-secondary ml-3"><i class="far fa-comment-alt"></i> <%= @review.comments.count %></div>
+        <div class="ml-auto">
+          <% if user_signed_in? && @review.user_id == current_user.id %>
+            <%= link_to edit_review_path(@review) do %>
+            <i class="fas fa-pencil-alt"></i> レビューを編集
+            <% end %>
+          <% end %>
+        </div>
       </div>
       <div class="comments mt-3">
         <%= render 'public/comments/index', review: @review %>
@@ -47,11 +50,6 @@
             <%= f.submit '送信', class: "btn btn-dark ml-3" %>
           </div>
         <% end %>
-      <% end %>
-      <% if user_signed_in? && @review.user_id == current_user.id %>
-        <div class="mt-4 d-flex justify-content-center">
-          <%= link_to "編集する", edit_review_path(@review), class: 'btn btn-dark mr-3 col-3' %>
-        </div>
       <% end %>
     </div>
   </div>
