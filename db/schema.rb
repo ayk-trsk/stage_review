@@ -70,13 +70,13 @@ ActiveRecord::Schema.define(version: 2021_07_20_054056) do
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "stage_id", null: false
+    t.string "title"
     t.float "rate", default: 0.0, null: false
     t.text "body"
     t.date "date"
     t.string "place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
   end
 
   create_table "stages", force: :cascade do |t|
