@@ -3,10 +3,8 @@ class Public::ReviewsController < ApplicationController
     if params[:stage_id]
       @stage = Stage.find(params[:stage_id])
       @reviews = Review.where(stage_id: params[:stage_id]).order(created_at: :desc).page(params[:page])
-    elsif params[:sort]
-      @reviews = Review.where.not(title: [nil, '']).order(params[:sort]).page(params[:page])
     else
-      @reviews = Review.where.not(title: [nil, '']).order(created_at: :desc).page(params[:page])
+      @reviews = Review.all.order(created_at: :desc).page(params[:page])
     end
   end
 
