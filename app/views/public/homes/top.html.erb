@@ -4,7 +4,7 @@
   <div class="col-md-10 mx-auto">
   <div class="row">
     <div class="col-md-6 pr-3 mt-5">
-      <h3 class="section-title">公演中</h3>
+      <h3 class="section-title">上演中の公演</h3>
       <ul class="list-group">
         <% @stages_now.each do |stage| %>
           <li class="list-group-item"><span class="badge"><%= stage.genre.name %></span></br><%= link_to stage.name, stage_path(stage) %></li>
@@ -15,7 +15,7 @@
       <% end %>
     </div>
     <div class="col-md-6 pl-3 mt-5">
-      <h3 class="section-title">公演予定</h3>
+      <h3 class="section-title">上演予定の公演</h3>
       <ul class="list-group">
         <% @stages_coming.each do |stage| %>
           <li class="list-group-item"><span class="badge"><%= stage.genre.name %></span></br><%= link_to stage.name, stage_path(stage) %></li>
