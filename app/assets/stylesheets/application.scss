@@ -112,6 +112,11 @@ a:hover{
   background: #c6b4ae;
 }
 
+.badge:hover{
+  color: #fff;
+  background: #a78c82;
+}
+
 .required:after {
     color: #e07a5f;
     content: " *";

@@ -1,9 +1,9 @@
 <% if stage.bookmarked_by?(current_user) %>
   <%= link_to stage_bookmarks_path(stage), method: :delete, remote: true do %>
-   <div class="btn bookmark-btn">見たい <i class="fas fa-bookmark"></i></div>
+   <div class="btn bookmark-btn px-5">見たい <i class="fas fa-bookmark"></i></div>
   <% end %>
 <% else %>
   <%= link_to stage_bookmarks_path(stage), method: :post, remote: true do %>
-    <div class="btn bookmarked-btn">見たい <i class="fas fa-plus"></i></div>
+    <div class="btn bookmarked-btn px-5">見たい <i class="fas fa-plus"></i></div>
   <% end %>
 <% end %>

@@ -2,13 +2,13 @@ class Public::StagesController < ApplicationController
   def index
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @stages = Stage.where(genre_id: params[:genre_id]).order(start_date: :desc).page(params[:page])
+      @stages = Stage.where(genre_id: params[:genre_id]).order(start_date: :desc).page(params[:page]).per(10)
     elsif params[:sort] == 'now'
-      @stages = Stage.where("start_date <= ?", Date.today).where("end_date >= ?", Date.today).limit(5).order(start_date: :desc).page(params[:page])
+      @stages = Stage.where("start_date <= ?", Date.today).where("end_date >= ?", Date.today).order(start_date: :desc).page(params[:page]).per(10)
     elsif params[:sort] == 'coming'
-      @stages = Stage.where("start_date > ?", Date.today).limit(5).order(start_date: :asc).page(params[:page])
+      @stages = Stage.where("start_date > ?", Date.today).order(start_date: :asc).page(params[:page]).per(10)
     else
-      @stages = Stage.order(start_date: :desc).page(params[:page])
+      @stages = Stage.all.order(start_date: :desc).page(params[:page]).per(10)
     end
   end
 

@@ -2,9 +2,9 @@ class Admin::StagesController < ApplicationController
   def index
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @stages = Stage.where(genre_id: params[:genre_id]).order(start_date: :desc).all
+      @stages = Stage.where(genre_id: params[:genre_id]).order(start_date: :desc).page(params[:page]).per(10)
     else
-      @stages = Stage.order(start_date: :desc).all
+      @stages = Stage.all.order(start_date: :desc).page(params[:page]).per(5)
     end
   end
 

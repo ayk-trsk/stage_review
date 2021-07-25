@@ -1,13 +1,16 @@
 <div class="container">
   <% if params[:genre_id] %>
-    <h5 class='offset-md-2 page_title my-4'>“<%= @genre.name %>”公演一覧</h5>
+    <h2 class='page-title'>“<%= @genre.name %>”公演一覧</h2>
   <% else %>
-    <h5 class='offset-md-2 page_title my-4'>公演一覧</h5>
+    <h2 class='page-title'>公演一覧</h2>
   <% end %>
   <div class="row col-md-10 mx-auto">
     <div class="ml-auto d-flex mb-4">
       <%= link_to "公演を新規登録する",new_admin_stage_path, class: "btn btn-dark px-3" %>
     </div>
   </div>
-  <%= render 'admin/stages/index', stages: @stages %>
+  <div class="row col-md-10 mx-auto">
+    <%= render 'admin/stages/index', stages: @stages %>
+  </div>
+  <div class="mt-3 d-flex justify-content-center"><%= paginate @stages %></div>
 </div>

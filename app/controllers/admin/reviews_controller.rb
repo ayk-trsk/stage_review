@@ -2,12 +2,12 @@ class Admin::ReviewsController < ApplicationController
   def index
     if params[:stage_id]
       @stage = Stage.find(params[:stage_id])
-      @reviews = Review.where(stage_id: params[:stage_id]).order(created_at: :desc)
+      @reviews = Review.where(stage_id: params[:stage_id]).order(created_at: :desc).page(params[:page]).per(10)
     elsif params[:user_id]
       @user = User.find(params[:user_id])
-      @reviews = Review.where(user_id: params[:user_id]).order(created_at: :desc).page(params[:page])
+      @reviews = Review.where(user_id: params[:user_id]).order(created_at: :desc).page(params[:page]).per(10)
     else
-      @reviews = Review.all.order(created_at: :desc).page(params[:page])
+      @reviews = Review.all.order(created_at: :desc).page(params[:page]).per(10)
     end
   end
 
