@@ -1,20 +1,23 @@
-<h2>ログイン</h2>
+<div class="container">
+  <h5 class='offset-md-2 page_title my-4'>ログイン</h5>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 mx-auto">
+      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+        <div class="field form-group">
+          <%= f.label :email, "︎メールアドレス", class: "badge" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "\uf0e0️ Email", class: "form-control fa" %>
+        </div>
 
-<%= form_with model: @user, url: user_session_path, local: true do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="field form-group">
+          <%= f.label :password, "パスワード", class: "badge" %><br />
+          <%= f.password_field :password, autocomplete: "current-password", :placeholder => "\uf023 Password", class: "form-control fa" %>
+        </div>
+
+        <div class="actions text-center">
+          <%= f.submit "ログイン", class: "btn btn-dark mt-3" %>
+        </div>
+      <% end %>
+      <p class="text-center mt-4"><%= link_to "登録がお済みでない方はこちら", new_user_registration_path %></p>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password", :placeholder => "６文字以上" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-
-  <h3>登録がお済みでない方</h3>
-  <p><%= link_to "新規登録", new_user_registration_path %></p>
+</div>
