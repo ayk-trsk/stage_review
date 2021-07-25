@@ -1,26 +1,26 @@
 <div class="container">
-  <h5 class='offset-md-2 page_title my-4'>ユーザー編集</h5>
+  <h5 class='page-title'>ユーザー編集</h5>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 mx-auto">
       <%= form_with model: @user, url: admin_user_path(@user), local:true do |f| %>
-        <div class="form-group">
-          <label class="badge mr-3">ユーザーID</label>
+        <div class="form-group text-center">
+          <label class="badge">ユーザーID</label></br>
           <%= @user.id %>
         </div>
-         <div class="form-group">
-          <label class="badge mr-3">ユーザーネーム</label>
+         <div class="form-group text-center">
+          <label class="badge">ユーザーネーム</label></br>
           <%= @user.name %>
         </div>
-        <div class="form-group">
-          <%= f.label :is_deleted, "会員ステータス", class: "badge mr-3" %>
+        <div class="form-group text-center">
+          <%= f.label :is_deleted, "会員ステータス", class: "badge" %></br>
           <%= f.radio_button :is_deleted, false, class: "text-secondary" %>
           <%= f.label :is_deleted, '有効', value: false, class: "radio_btn mr-3" %>
           <%= f.radio_button :is_deleted, true %>
           <%= f.label :is_deleted, '退会', value: true, class: "radio_btn" %>
         </div>
-        <div class="form-group d-flex justify-content-center">
-          <%= f.submit "更新する", class: 'btn btn-dark mr-3 col-3' %>
-          <%= link_to "キャンセル", admin_user_path, class: 'btn btn-dark col-3' %>
+        <div class="form-group text-center mt-4">
+          <%= f.submit "更新する", class: 'btn btn-dark mr-3 col-5 col-md-3' %>
+          <%= link_to "キャンセル", admin_users_path, class: 'btn btn-dark col-5 col-md-3' %>
         </div>
       <% end %>
     </div>

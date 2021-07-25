@@ -1,11 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all
-  end
-
-  def show
-    @user = User.find(params[:id])
-    @reviews = Review.where(user_id: params[:id]).order(created_at: :desc).all
+    @users = User.all.page(params[:page])
   end
 
   def edit
@@ -15,7 +10,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_user_path(@user)
+      redirect_to admin_users_path
     else
       render 'edit'
     end

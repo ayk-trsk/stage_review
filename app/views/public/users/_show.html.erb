@@ -1,8 +1,12 @@
 <div class="d-flex">
   <div class="user-image"><%= attachment_image_tag user, :image, format: 'jpeg', fallback: "no_image.jpg" %></div>
   <div class="ml-3">
-    <%= user.name %>
-    <p class="small text-secondary mt-1">
+    <% if current_page?("/users/#{user.id}") %>
+      <span class="font-weight-bold"><%= user.name %></span>
+    <% else %>
+      <span class="font-weight-bold"><%=link_to user.name, user_path(user) %></span>
+    <% end %>
+    <p class="small mt-1">
       <%= link_to user_followings_path(user) do %><%= user.followings.where(is_deleted: false).count %><% end %> フォロー
       <%= link_to user_followers_path(user) do %><%= user.followers.where(is_deleted: false).count %><% end %> フォロワー
     </p>
@@ -17,6 +21,6 @@
     <% end %>
   </div>
 </div>
-<div class="mb-3">
-  <p><%= user.introduction %></p>
+<div>
+  <%= user.introduction %>
 </div>

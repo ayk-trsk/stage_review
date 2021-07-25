@@ -1,13 +1,13 @@
 <div class="container">
-  <h5 class='offset-md-2 page_title my-4'>会員退会</h5>
+  <h5 class='page-title'>会員退会</h5>
   <div class="row">
-    <div class="col-md-8 mx-auto mt-5">
+    <div class="col-md-8 mx-auto px-3 mt-5">
       <p><strong>会員退会に際して、お読みください。</strong></p>
-      <p>退会された場合も、ご自身でお書きいただいた映画レビューはそのままサイト上に残ります。</p>
+      <p>退会された場合も、ご自身でお書きいただいたレビューはそのままサイト上に残ります。</p>
       <p>サイト上の情報の変更・削除が必要な場合は、必ず退会前にご自身の情報をご確認いただき、変更・削除をしてください。</p>
-      <div class="mt-4 d-flex justify-content-center">
-        <%= link_to "マイページへ戻る", user_path, class: 'btn btn-dark mr-3 col-3' %>
-        <%= link_to "退会する", withdraw_user_path, method: :patch, class: "btn btn-outline-dark col-3", "data-confirm" => "本当に退会しますか？" %>
+      <div class="mt-5 text-center">
+        <%= link_to "マイページへ戻る", user_path, class: 'btn btn-dark' %></br>
+        <%= link_to "退会する", withdraw_user_path, method: :patch, class: "btn btn-outline-dark mt-4", "data-confirm" => "本当に退会しますか？" %>
       </div>
     </div>
   </div>

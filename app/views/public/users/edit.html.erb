@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class='offset-md-2 page_title my-4'>プロフィール編集</h5>
+  <h5 class='page-title'>プロフィール編集</h5>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 mx-auto">
       <%= form_with model: @user, url: user_path(@user), local:true do |f| %>
@@ -15,14 +15,29 @@
           <%= f.label :introduction, "自己紹介", class: "badge" %></br>
           <%= f.text_area :introduction, :rows => "5", class: "form-control" %>
         </div>
-        <div class="form-group d-flex justify-content-center">
-          <%= f.submit "更新する", class: 'btn btn-dark mr-3 col-3' %>
-          <%= link_to "キャンセル", user_path, class: 'btn btn-dark col-3' %>
-        </div>
-        <div class="form-group d-flex justify-content-center mt-5">
-          <%= link_to "退会する", quit_user_path, class: 'btn btn-outline-dark btn-sm col-3' %>
+        <div class="form-group text-center mt-4">
+          <%= f.submit "更新する", class: 'btn btn-dark mr-4 col-5 col-md-3' %>
+          <%= link_to "キャンセル", user_path, class: 'btn btn-dark col-5 col-md-3' %>
         </div>
       <% end %>
     </div>
+  </div>
+  <h5 class='page-title'>アカウント設定</h5>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 mx-auto">
+      <%= form_with model: @user, url: user_path(@user), local:true do |f| %>
+         <div class="form-group">
+          <%= f.label :email, "メールアドレス", class: "badge" %></br>
+          <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+        </div>
+        <div class="form-group text-center mt-4">
+          <%= f.submit "更新する", class: 'btn btn-dark mr-4 col-5 col-md-3' %>
+          <%= link_to "キャンセル", user_path, class: 'btn btn-dark col-5 col-md-3' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="form-group text-center mt-5">
+    <%= link_to "退会する", quit_user_path, class: 'btn btn-outline-dark btn-sm col-5 col-md-3' %>
   </div>
 </div>

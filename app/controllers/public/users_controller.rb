@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
       reviews = Review.order(created_at: :desc)
     end
     my_reviews = reviews.select { |review| review.user_id == @user.id }
-    @reviews = Kaminari.paginate_array(my_reviews).page(params[:page])
+    @reviews = Kaminari.paginate_array(my_reviews).page(params[:page]).per(10)
   end
 
   def edit

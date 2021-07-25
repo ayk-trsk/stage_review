@@ -3,6 +3,8 @@ class Admin::ReviewsController < ApplicationController
     if params[:stage_id]
       @stage = Stage.find(params[:stage_id])
       @reviews = Review.where(stage_id: params[:stage_id]).order(created_at: :desc)
+    elsif params[:user_id]
+      @reviews = Review.where(user_id: params[:user_id]).order(created_at: :desc)
     else
       @reviews = Review.where.not(title: [nil, '']).order(created_at: :desc)
     end

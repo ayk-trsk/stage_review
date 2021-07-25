@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :stages
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :edit, :update]
     resources :reviews, only: [:index, :show, :edit, :update, :destroy]
     get 'search' => 'search#search'
     resources :contacts, only: [:index, :show]

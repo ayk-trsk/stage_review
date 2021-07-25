@@ -1,27 +1,31 @@
-<table class="table bg-white">
-  <thead class="thead-light">
-    <tr>
-      <th>ユーザーID</th>
-      <th>ユーザーネーム</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% users.each do |user| %>
+<div class="table-responsive">
+  <table class="table bg-white text-center" style="table-layout:fixed;">
+    <thead class="thead-light">
       <tr>
-        <td><%= user.id%></td>
-        <td><%= link_to user.name, admin_user_path(user) %></td>
-        <td><%= user.email %></td>
-        <td>
-          <% if user.is_deleted %>
-            <span class="text-muted"><strong>退会</strong></span>
-          <% else %>
-            <span class="text-success"><strong>有効</strong></span>
-          <% end %>
-          <%= link_to "編集", edit_admin_user_path(user), class: "btn btn-sm btn-dark ml-2" %>
-        </td>
+        <th style="width:100px;">ユーザーID</th>
+        <th style="width:200px;">ユーザーネーム</th>
+        <th style="width:250px;">メールアドレス</th>
+        <th style="width:150px;">ステータス</th>
+        <th style="width:100px;">レビュー数</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td><%= user.id%></td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td>
+            <% if user.is_deleted %>
+              <span class="text-muted"><strong>退会</strong></span>
+            <% else %>
+              <span class="text-success"><strong>有効</strong></span>
+            <% end %>
+            <%= link_to "編集", edit_admin_user_path(user), class: "btn btn-sm btn-dark ml-2" %>
+          </td>
+          <td><%= link_to user.reviews.count, admin_reviews_path(user_id: user.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
