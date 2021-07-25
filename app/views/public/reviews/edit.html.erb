@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class='offset-md-2 page_title my-4'>レビュー編集</h5>
+  <h2 class='page-title'>レビュー編集</h2>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 mx-auto">
       <%= render 'layouts/errors', obj: @review %>
@@ -34,9 +34,9 @@
           <%= f.radio_button :place, "テレビ放送" %>
           <%= f.label :place, "テレビ放送", {value: "テレビ放送"} %>
         </div>
-        <div class="form-group d-flex justify-content-center">
-          <%= f.submit "更新する", class: 'btn btn-dark mr-3 col-3' %>
-          <%= link_to "削除する", review_path(@review), method: :delete, class: "btn btn-outline-dark col-3", "data-confirm" => "本当に削除しますか？" %>
+        <div class="form-group text-center">
+          <%= f.submit "更新する", class: 'btn btn-dark mr-3' %>
+          <%= link_to "削除する", review_path(@review), method: :delete, class: "btn btn-outline-dark", "data-confirm" => "本当に削除しますか？" %>
         </div>
       <% end %>
     </div>

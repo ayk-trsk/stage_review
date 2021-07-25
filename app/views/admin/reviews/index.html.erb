@@ -1,12 +1,15 @@
 <div class="container">
   <% if params[:stage_id] %>
-    <h5 class='offset-md-2 page_title my-4'>“<%= @stage.name %>”のレビュー一覧</h5>
+    <h2 class='page-title'>“<%= @stage.name %>”のレビュー一覧</h2>
+  <% elsif params[:user_id] %>
+    <h2 class='page-title'>“<%= @user.name %>”さんのレビュー一覧</h2>
   <% else %>
-    <h5 class='offset-md-2 page_title my-4'>レビュー一覧</h5>
+    <h2 class='page-title'>レビュー一覧</h2>
   <% end %>
   <div class="row">
-    <div class="col-md-8 mx-auto bg-white">
+    <div class="col-md-10 mx-auto">
       <%= render 'admin/reviews/index', reviews: @reviews %>
     </div>
   </div>
+  <div class="mt-3 d-flex justify-content-center"><%= paginate @reviews %></div>
 </div>

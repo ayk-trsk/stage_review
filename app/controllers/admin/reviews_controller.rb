@@ -4,9 +4,10 @@ class Admin::ReviewsController < ApplicationController
       @stage = Stage.find(params[:stage_id])
       @reviews = Review.where(stage_id: params[:stage_id]).order(created_at: :desc)
     elsif params[:user_id]
-      @reviews = Review.where(user_id: params[:user_id]).order(created_at: :desc)
+      @user = User.find(params[:user_id])
+      @reviews = Review.where(user_id: params[:user_id]).order(created_at: :desc).page(params[:page])
     else
-      @reviews = Review.where.not(title: [nil, '']).order(created_at: :desc)
+      @reviews = Review.all.order(created_at: :desc).page(params[:page])
     end
   end
 
@@ -22,9 +23,9 @@ class Admin::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
-      redirect_to review_path
+      redirect_to admin_review_path
     else
-      render 'admin/reviews '
+      render 'admin/reviews'
     end
   end
 

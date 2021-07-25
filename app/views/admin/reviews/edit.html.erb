@@ -1,12 +1,12 @@
 <div class="container">
-  <h5 class='offset-md-2 page_title my-4'>レビュー編集</h5>
+  <h2 class='page-title'>レビュー編集</h2>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 mx-auto">
       <h5><%= @review.stage.name %></h5>
-      <%= form_with model: @review, url: review_path(@review), local:true do |f| %>
+      <%= form_with model: @review, url: admin_review_path(@review), local:true do |f| %>
          <div class="form-group">
           <%= f.label :stage_id, "公演", class: "badge" %></br>
-          <%= f.select :stage_id, @stages.map{ |stage| [stage.name, stage.id] } %>
+          <%= f.collection_select :stage_id, @stages, :id, :stage_id_and_name %>
         </div>
         <div id="rating-form">
           <%= f.label :rate, "評価", class: "badge" %></br>
@@ -24,10 +24,13 @@
           <%= f.label :place, "観劇場所(方法)", class: "badge" %></br>
           <%= @review.place %>
         </div>
-        <div class="form-group">
-          <%= f.submit "保存する", class: 'btn btn-dark mx-auto d-block' %>
+        <div class="form-group text-center my-4">
+          <%= f.submit "保存する", class: 'btn btn-dark px-4' %>
         </div>
       <% end %>
+      <div class="text-center mt-5">
+        <%= link_to "削除する", admin_review_path(@review), method: :delete, class: "btn btn-outline-dark btn-sm", "data-confirm" => "本当に消しますか？" %>
+      </div>
     </div>
   </div>
 </div>
