@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @bookmarks = Bookmark.where(user_id: @user.id).order(created_at: :desc).page(params[:page])
+    @bookmarks = Bookmark.where(user_id: @user.id).order(created_at: :desc)
     if params[:sort]
       selection = params[:sort]
       reviews = Review.sort(selection)

@@ -1,7 +1,14 @@
 <div class="container">
-  <h5 class='offset-md-2 page_title my-4'>検索ワード '<%= @value %>'</h5>
+  <h2 class='page-title'>検索ワード '<%= @value %>'</h2>
   <% if @model == 'stage' %>
+  <div class="row col-md-10 mx-auto">
+    <div class="ml-auto d-flex mb-4">
+      <%= link_to "公演を新規登録する",new_admin_stage_path, class: "btn btn-dark px-3" %>
+    </div>
+  </div>
+  <div class="row col-md-10 mx-auto">
     <%= render 'admin/stages/index', stages: @stages %>
+  </div>
   <% else %>
   <div class="row col-md-10 mx-auto">
     <%= render 'admin/users/index', users: @users %>
