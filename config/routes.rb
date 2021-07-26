@@ -29,6 +29,10 @@ Rails.application.routes.draw do
     post 'contacts/confirm' => 'contacts#confirm'
     post 'contacts/back' => 'contacts#back'
     get 'contacts/done' => 'contacts#done'
+
+    devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    end
   end
 
   # 以下管理者のルーティング
