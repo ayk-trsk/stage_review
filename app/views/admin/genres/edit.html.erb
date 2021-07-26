@@ -1,6 +1,5 @@
 <div class='container'>
   <h2 class='page-title'>ジャンル編集</h2>
-  <%= render 'layouts/errors', obj: @genre %>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 mx-auto">
       <%= form_with model: @genre, url: admin_genre_path, local: true do |f| %>

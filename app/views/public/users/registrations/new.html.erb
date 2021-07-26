@@ -2,6 +2,7 @@
   <h2 class='page-title'>新規登録</h2>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 mx-auto">
+      <%= render 'layouts/errors', obj: @user %>
       <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
 
         <div class="field form-group">
@@ -23,7 +24,7 @@
         </div>
 
         <div class="field form-group">
-          <%= f.label :password_confirmation,"パスワード確認", class: "badge" %><br />
+          <%= f.label :password_confirmation,"確認用パスワード", class: "badge" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "\uf023 Password", class: "form-control fa" %>
         </div>
 

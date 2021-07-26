@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_reviews, through: :favorites, source: :review
   has_many :commented_reviews, through: :comments, source: :review
+  validates :name, presence: true
   attachment :image
 
   # 退会ユーザーをログインさせない

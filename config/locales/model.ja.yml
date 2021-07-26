@@ -11,6 +11,8 @@ ja:
         email: メールアドレス
         password: パスワード
         name: ユーザーネーム
+        password_confirmation: 確認用パスワード
+        current_password: 現在のパスワード
       admin:
         email: メールアドレス
         password: パスワード
