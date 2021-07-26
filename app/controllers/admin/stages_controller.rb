@@ -4,7 +4,7 @@ class Admin::StagesController < ApplicationController
       @genre = Genre.find(params[:genre_id])
       @stages = Stage.where(genre_id: params[:genre_id]).order(start_date: :desc).page(params[:page]).per(10)
     else
-      @stages = Stage.all.order(start_date: :desc).page(params[:page]).per(5)
+      @stages = Stage.all.order(start_date: :desc).page(params[:page]).per(10)
     end
   end
 
