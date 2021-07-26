@@ -17,7 +17,9 @@
           <%= render "public/relationships/follow-btn", user: user %>
       </div>
     <% elsif user_signed_in? && user == current_user %>
-      <%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-outline-dark btn-sm" %>
+      <%= link_to edit_user_path(user) do %>
+        <i class="fas fa-cog fa-lg"></i>
+      <% end %>
     <% end %>
   </div>
 </div>

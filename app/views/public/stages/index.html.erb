@@ -12,7 +12,7 @@
     <% @stages.each do |stage| %>
       <div class="row p-4 border-bottom align-items-center">
         <div class="col-12 col-md-8">
-          <div><%= link_to stage.name, stage_path(stage) %></div>
+          <div><strong><%= link_to stage.name, stage_path(stage) %></strong></div>
           <div><%= stage.start_date.strftime("%Y年%-m月%-d日") %>〜<%= stage.end_date.strftime("%Y年%-m月%-d日") %></div>
         </div>
         <div class="col-12 col-md-4 d-flex flex-row align-items-center">
