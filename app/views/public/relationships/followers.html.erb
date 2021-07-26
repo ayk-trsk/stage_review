@@ -12,6 +12,7 @@
           <%= render 'public/users/index', users: @users %>
         </div>
       </div>
+      <div class="mt-3 d-flex justify-content-center"><%= paginate @users %></div>
     <% else %>
       <div class="text-center">フォロワーはいません</div>
     <% end %>
