@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :ensure_correct_user, except: [:show]
   def show
     @user = User.find(params[:id])
     @bookmarks = Bookmark.where(user_id: @user.id).order(created_at: :desc)
@@ -38,5 +39,12 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :introduction, :image)
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to root_path
+    end
   end
 end

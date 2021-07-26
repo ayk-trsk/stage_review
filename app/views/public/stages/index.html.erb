@@ -29,10 +29,12 @@
     <% end %>
   </div>
   <div class="mt-3 d-flex justify-content-center"><%= paginate @stages %></div>
-  <div class="row">
-    <div class="mx-auto d-flex mt-5">
-      <%= link_to "公演を新規登録する",new_stage_path, class: "btn btn-dark px-3" %>
+  <% if user_signed_in? %>
+    <div class="row">
+      <div class="mx-auto d-flex mt-5">
+        <%= link_to "公演を新規登録する",new_stage_path, class: "btn btn-dark px-3" %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 

@@ -1,4 +1,6 @@
 class Public::ReviewsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def index
     if params[:stage_id]
       @stage = Stage.find(params[:stage_id])
@@ -54,5 +56,13 @@ class Public::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title, :rate, :body, :date, :place, :user_id, :stage_id)
+  end
+
+  def ensure_correct_user
+    @review = Review.find(params[:id])
+    @user = User.find(@review.user.id)
+    unless @user == current_user
+      redirect_to root_path
+    end
   end
 end

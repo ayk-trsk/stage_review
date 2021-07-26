@@ -1,4 +1,5 @@
 class Public::BookmarksController < ApplicationController
+  before_action :authenticate_user!
   def create
     @stage = Stage.find(params[:stage_id])
     bookmark = current_user.bookmarks.new(stage_id: @stage.id)

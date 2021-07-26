@@ -1,4 +1,5 @@
 class Admin::StagesController < ApplicationController
+  before_action :authenticate_admin!
   def index
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])

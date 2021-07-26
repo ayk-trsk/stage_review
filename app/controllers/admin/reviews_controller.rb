@@ -1,4 +1,5 @@
 class Admin::ReviewsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     if params[:stage_id]
       @stage = Stage.find(params[:stage_id])
