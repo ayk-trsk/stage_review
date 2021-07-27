@@ -10,9 +10,9 @@
     <tbody>
       <% stages.each do |stage| %>
         <tr>
-          <td class="text-left ml-3"><%= link_to stage.name, admin_stage_path(stage)%></td>
+          <td class="text-left ml-3"><%= link_to stage.name, admin_stage_path(stage), class: "text-decoration-underline"%></td>
           <td><%= stage.reviews.average(:rate).to_f.round(1) %></td>
-          <td><%= link_to stage.reviews.count, admin_reviews_path(stage_id: stage.id) %></td>
+          <td><%= link_to stage.reviews.count, admin_reviews_path(stage_id: stage.id), class: "text-decoration-underline" %></td>
         </tr>
       <% end %>
     </tbody>

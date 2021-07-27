@@ -23,7 +23,7 @@
             <% end %>
             <%= link_to "編集", edit_admin_user_path(user), class: "btn btn-sm btn-dark ml-2" %>
           </td>
-          <td><%= link_to user.reviews.count, admin_reviews_path(user_id: user.id) %></td>
+          <td><%= link_to user.reviews.count, admin_reviews_path(user_id: user.id), class: "text-decoration-underline" %></td>
         </tr>
       <% end %>
     </tbody>
