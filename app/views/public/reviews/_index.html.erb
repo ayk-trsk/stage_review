@@ -19,8 +19,8 @@
             </div>
           </div>
         <% end %>
-        <% unless params[:stage_id] %>
-        <div class="mt-1"><strong><%= link_to review.stage.name, stage_path(review.stage_id) %></strong></div>
+        <% unless params[:stage_id] || current_page?("/stages/#{review.stage.id}") %>
+          <div class="mt-1"><strong><%= link_to review.stage.name, stage_path(review.stage_id) %></strong></div>
         <% end %>
         <div class="d-flex align-items-center mt-1">
           <div id="star-rate-<%= review.id %>"></div>

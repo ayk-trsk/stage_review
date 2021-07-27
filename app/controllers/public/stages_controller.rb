@@ -28,6 +28,7 @@ class Public::StagesController < ApplicationController
 
   def show
     @stage = Stage.find(params[:id])
+    @reviews = Review.where.not(body: "").where(stage_id: params[:id]).order(created_at: :desc)
   end
 
   def edit
