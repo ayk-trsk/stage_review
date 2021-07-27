@@ -5,11 +5,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- 検索フォーム -->
       <div class="form-group my-2 my-md-0 ml-auto mr-3">
         <% if admin_signed_in? %>
           <%= form_with url: admin_search_path, method: :get, class: "form-inline", local: true do |f| %>
-            <%= f.select 'search[model]', options_for_select({ "公演名" => "stage", "ユーザー名" => "user" }), class: "form-control col-4"%>
-            <%= f.text_field 'search[value]', class: "form-control col-6" %>
+            <%= f.select 'search[model]', options_for_select({ "公演名" => "stage", "ユーザー名" => "user" }), class: "form-control col-6 col-sm-4"%>
+            <%= f.text_field 'search[value]', class: "form-control col-10 col-sm-6" %>
             <%= button_tag type: "submit", class: "btn btn-dark col-2" do %>
               <i class="fas fa-search"></i>
             <% end %>

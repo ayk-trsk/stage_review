@@ -1,5 +1,5 @@
 <% @stages.each do |stage| %>
-  <div class="row p-4 border-bottom align-items-center">
+  <div class="row py-3 px-2 border-bottom align-items-center">
     <div class="col-12 col-md-8">
       <div><strong><%= link_to stage.name, stage_path(stage) %></strong></div>
       <div><%= stage.start_date.strftime("%Y年%-m月%-d日") %>〜<%= stage.end_date.strftime("%Y年%-m月%-d日") %>　<%= link_to stage.genre.name, stages_path(genre_id: stage.genre.id), class: "badge" %></div>
