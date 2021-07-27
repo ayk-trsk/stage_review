@@ -1,0 +1,17 @@
+<% @stages.each do |stage| %>
+  <div class="row p-4 border-bottom align-items-center">
+    <div class="col-12 col-md-8">
+      <div><strong><%= link_to stage.name, stage_path(stage) %></strong></div>
+      <div><%= stage.start_date.strftime("%Y年%-m月%-d日") %>〜<%= stage.end_date.strftime("%Y年%-m月%-d日") %>　<%= link_to stage.genre.name, stages_path(genre_id: stage.genre.id), class: "badge" %></div>
+    </div>
+    <div class="col-12 col-md-4 d-flex align-items-center">
+      <div id="star-rate-<%= stage.id %>"></div>
+      <% if stage.reviews.average(:rate).to_f > 0 %>
+      <div class="rating-score"><%= stage.reviews.average(:rate).to_f.round(1) %></div>
+      <% else %>
+      <div class="rating-score">-</div>
+      <% end %>
+    </div>
+  </div>
+  <%= render 'public/stages/rate_average', stage: stage %>
+<% end %>
