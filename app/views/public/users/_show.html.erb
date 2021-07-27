@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div class="d-flex flex-wrap">
   <div class="user-image"><%= attachment_image_tag user, :image, format: 'jpeg', fallback: "no_image.jpg" %></div>
   <div class="ml-3">
     <% if current_page?("/users/#{user.id}") %>
@@ -14,7 +14,7 @@
   <div class="ml-auto">
     <% if user_signed_in? && user != current_user %>
       <div id="follow_btn">
-          <%= render "public/relationships/follow-btn", user: user %>
+        <%= render "public/relationships/follow-btn", user: user %>
       </div>
     <% elsif user_signed_in? && user == current_user %>
       <%= link_to edit_user_path(user) do %>
