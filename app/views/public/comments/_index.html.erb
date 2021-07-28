@@ -1,6 +1,6 @@
 <% review.comments.each do |comment| %>
   <% comment_user = comment.user %>
-  <div class="border-top p-4">
+  <div class="border-top py-3">
     <div class="d-flex">
       <div class="user-image"><%= attachment_image_tag comment_user, :image, format: 'jpeg', fallback: "no_image.jpg" %></div>
       <div class="ml-3">
