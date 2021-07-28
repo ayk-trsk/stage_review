@@ -25,7 +25,8 @@
           <%= f.text_area :detail, :rows => "5", :placeholder => "ここに詳細な内容を記述してください", class: "form-control" %>
         </div>
         <div class="form-group text-center mt-4">
-          <%= f.submit "新規登録", class: 'btn btn-dark' %>
+          <%= f.submit "新規登録", class: 'btn btn-dark col-5 col-md-3 mr-3' %>
+          <%= link_to "キャンセル", :back, class: 'btn btn-dark col-5 col-md-3' %>
         </div>
       <% end %>
     </div>
