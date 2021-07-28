@@ -115,7 +115,7 @@ a:hover{
 
 .badge{
   color: #fff;
-  font-size: 14px;
+  font-size: 0.8rem;
   padding: 3px 5px;
   background: #c6b4ae;
 }
@@ -198,6 +198,12 @@ footer {
 
 .pagination>li>a:hover {
   color: #343A40;
+}
+
+@media screen and (max-width: 767px) {/* 640px以下*/
+  html{
+    font-size: 14px;
+  }
 }
 
 
