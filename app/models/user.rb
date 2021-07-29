@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :commented_reviews, through: :comments, source: :review
   validates :name, presence: true
   attachment :image
+  validates :introduction, length: { maximum: 50 }
 
   # 退会ユーザーをログインさせない
   def active_for_authentication?
