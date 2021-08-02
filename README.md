@@ -27,10 +27,14 @@
 - ユーザをフォローすることもできます。
 
 ## 設計書
-- 画面遷移図 <https://drive.google.com/file/d/1QN8g8Atde9sBUFLdZczokJbaXx93-XmQ/view?usp=sharing>
-- テーブル定義書 <https://docs.google.com/spreadsheets/d/1tj4HVBqKBehUiZOid045XqLU1R9e3I2RWb6O2zce2dA/edit?usp=sharing>
-- ER図 <https://drive.google.com/file/d/1GBdVoBbL4uVb5NQhpDqR5UEPGM_Mcvtq/view?usp=sharing>
-- アプリケーション詳細設計書　<https://docs.google.com/spreadsheets/d/1yEULPJOANuTLWyCJWA6MFejVrVPpKj1u5xqMu7jqQTA/edit?usp=sharing>
+- 画面遷移図</br>
+<https://drive.google.com/file/d/1QN8g8Atde9sBUFLdZczokJbaXx93-XmQ/view?usp=sharing>
+- テーブル定義書</br>
+<https://docs.google.com/spreadsheets/d/1tj4HVBqKBehUiZOid045XqLU1R9e3I2RWb6O2zce2dA/edit?usp=sharing>
+- ER図</br>
+<https://drive.google.com/file/d/1GBdVoBbL4uVb5NQhpDqR5UEPGM_Mcvtq/view?usp=sharing>
+- アプリケーション詳細設計書　</br>
+<https://docs.google.com/spreadsheets/d/1yEULPJOANuTLWyCJWA6MFejVrVPpKj1u5xqMu7jqQTA/edit?usp=sharing>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1gVcvnFX7YmrpT2JH4SHvjuXrpjw19o7usCJPxJq_i5A/edit?usp=sharing>
