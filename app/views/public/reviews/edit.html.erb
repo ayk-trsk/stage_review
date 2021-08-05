@@ -17,18 +17,18 @@
           <%= f.text_area :body, :rows => "5", class: "form-control" %>
         </div>
         <div class="form-group mt-3">
-          <%= f.label :date, "観劇日", class: "badge" %></br>
+          <%= f.label :date, "観劇日", class: "badge" %><br />
           <%= f.date_field :date %>
         </div>
         <div class="form-group">
-          <%= f.label :place, "観劇場所(方法)", class: "badge" %></br>
+          <%= f.label :place, "観劇場所(方法)", class: "badge" %><br />
           <%= f.radio_button :place, "劇場" %>
           <%= f.label :place, "劇場" %>
-          <%= f.text_field :place, placeholder: '劇場名' %></br>
+          <%= f.text_field :place, placeholder: '劇場名' %><br />
           <%= f.radio_button :place, "生配信/ライブビューイング" %>
           <%= f.label :place, "ライブ配信/ライブビューイング", {value: "ライブ配信/ライブビューイング", class: "mr-3"} %>
           <%= f.radio_button :place, "DVD/BD" %>
-          <%= f.label :place, "DVD/BD", {value: "DVD/BD"} %></br>
+          <%= f.label :place, "DVD/BD", {value: "DVD/BD"} %><br />
           <%= f.radio_button :place, "VOD" %>
           <%= f.label :place, "VOD", {value: "VOD", class: "mr-3"} %>
           <%= f.radio_button :place, "テレビ放送" %>

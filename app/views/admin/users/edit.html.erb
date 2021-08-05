@@ -4,15 +4,15 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 mx-auto">
       <%= form_with model: @user, url: admin_user_path(@user), local:true do |f| %>
         <div class="form-group text-center">
-          <label class="badge">ユーザーID</label></br>
+          <label class="badge">ユーザーID</label><br />
           <%= @user.id %>
         </div>
          <div class="form-group text-center">
-          <label class="badge">ユーザーネーム</label></br>
+          <label class="badge">ユーザーネーム</label><br />
           <%= @user.name %>
         </div>
         <div class="form-group text-center">
-          <%= f.label :is_deleted, "会員ステータス", class: "badge" %></br>
+          <%= f.label :is_deleted, "会員ステータス", class: "badge" %><br />
           <%= f.radio_button :is_deleted, false, class: "text-secondary" %>
           <%= f.label :is_deleted, '有効', value: false, class: "radio_btn mr-3" %>
           <%= f.radio_button :is_deleted, true %>

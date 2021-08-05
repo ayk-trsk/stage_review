@@ -9,15 +9,15 @@
           <%= f.text_field :name, :placeholder => "公演名", class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :genre_id, "ジャンル", class: "badge" %><span class="required"></span></br>
+          <%= f.label :genre_id, "ジャンル", class: "badge" %><span class="required"></span><br />
           <%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "-- 選択してください --", class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :start_date, "公演開始日", class: "badge" %><span class="required"></span></br>
+          <%= f.label :start_date, "公演開始日", class: "badge" %><span class="required"></span><br />
           <%= f.date_field :start_date %>
         </div>
         <div class="form-group">
-          <%= f.label :end_date, "公演終了日", class: "badge" %><span class="required"></span></br>
+          <%= f.label :end_date, "公演終了日", class: "badge" %><span class="required"></span><br />
           <%= f.date_field :end_date %>
         </div>
         <div class="form-group">
