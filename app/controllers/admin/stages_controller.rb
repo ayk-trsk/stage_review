@@ -40,8 +40,7 @@ class Admin::StagesController < ApplicationController
   end
 
   def destroy
-    @stage = Stage.find(params[:id])
-    @stage.destroy
+    Stage.find(params[:id]).destroy
     redirect_to admin_stages_path
   end
 
