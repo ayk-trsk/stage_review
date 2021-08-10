@@ -4,7 +4,7 @@
           <div class="d-flex">
             <div class="user-image">
               <% if review.user.is_deleted == false %>
-                <%= attachment_image_tag review.user, :image, format: 'jpeg', fallback: "no_image.jpg" %>
+                <%= link_to attachment_image_tag(review.user, :image, format: 'jpeg', fallback: "no_image.jpg"), user_path(review.user) %>
               <% else %>
                 <%= image_tag('no_image.jpg') %>
               <% end %>
