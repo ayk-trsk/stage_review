@@ -26,36 +26,44 @@
             <!-- レビュー一覧 -->
             <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
               <!-- 並び替えプルダウン -->
-              <% if @reviews.count > 1 %>
-                <div class="text-left pt-3 ml-2">
-                  <%= form_with model: @review, url: user_path, method: :get, local: true do |f| %>
-                    <%= f.select :sort, options_for_select({"投稿が新しい順": "new", "投稿が古い順": "old", "観劇日が新しい順": "watched", "観劇日が古い順": "watched_a", "評価が高い順": "rate", "いいねが多い順": "favorites", "コメントが多い順": "comments" },params[:sort]), class: "form-control" %>
-                    <%= f.submit "並び替え", class: "btn btn-dark btn-sm" %>
-                  <% end %>
-                </div>
+              <% if @user.reviews.exists? %>
+                <% if @reviews.count > 1 %>
+                  <div class="text-left pt-3 ml-2">
+                    <%= form_with model: @review, url: user_path, method: :get, local: true do |f| %>
+                      <%= f.select :sort, options_for_select({"投稿が新しい順": "new", "投稿が古い順": "old", "観劇日が新しい順": "watched", "観劇日が古い順": "watched_a", "評価が高い順": "rate", "いいねが多い順": "favorites", "コメントが多い順": "comments" },params[:sort]), class: "form-control" %>
+                      <%= f.submit "並び替え", class: "btn btn-dark btn-sm" %>
+                    <% end %>
+                  </div>
+                <% end %>
+                <%= render 'public/reviews/index', reviews: @reviews %>
+                <div class="mt-3 d-flex justify-content-center"><%= paginate @reviews %></div>
+              <% else %>
+                <div class="text-center py-3">投稿されたレビューはありません</div>
               <% end %>
-              <%= render 'public/reviews/index', reviews: @reviews %>
-              <div class="mt-3 d-flex justify-content-center"><%= paginate @reviews %></div>
             </div>
             <!-- 見たい公演一覧 -->
             <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
-              <% @bookmarks.each do |bookmark| %>
-                <% stage = Stage.find_by(id: bookmark.stage_id) %>
-                  <div class="row py-3 px-2 border-bottom align-items-center">
-                    <div class="col-12 col-md-8">
-                      <div><strong><%= link_to stage.name, stage_path(stage) %></strong></div>
-                      <div><%= stage.start_date.strftime("%Y年%-m月%-d日") %>〜<%= stage.end_date.strftime("%Y年%-m月%-d日") %>　<%= link_to stage.genre.name, stages_path(genre_id: stage.genre.id), class: "badge" %></div>
+              <% if @user.reviews.exists? %>
+                <% @bookmarks.each do |bookmark| %>
+                  <% stage = Stage.find_by(id: bookmark.stage_id) %>
+                    <div class="row py-3 px-2 border-bottom align-items-center">
+                      <div class="col-12 col-md-8">
+                        <div><strong><%= link_to stage.name, stage_path(stage) %></strong></div>
+                        <div><%= stage.start_date.strftime("%Y年%-m月%-d日") %>〜<%= stage.end_date.strftime("%Y年%-m月%-d日") %>　<%= link_to stage.genre.name, stages_path(genre_id: stage.genre.id), class: "badge" %></div>
+                      </div>
+                      <div class="col-12 col-md-4 d-flex align-items-center">
+                        <div id="star-rate-<%= stage.id %>"></div>
+                        <% if stage.reviews.average(:rate).to_f > 0 %>
+                        <div class="rating-score"><%= stage.reviews.average(:rate).to_f.round(1) %></div>
+                        <% else %>
+                        <div class="rating-score">-</div>
+                        <% end %>
+                      </div>
                     </div>
-                    <div class="col-12 col-md-4 d-flex align-items-center">
-                      <div id="star-rate-<%= stage.id %>"></div>
-                      <% if stage.reviews.average(:rate).to_f > 0 %>
-                      <div class="rating-score"><%= stage.reviews.average(:rate).to_f.round(1) %></div>
-                      <% else %>
-                      <div class="rating-score">-</div>
-                      <% end %>
-                    </div>
-                  </div>
-                <%= render 'public/stages/rate_average', stage: stage %>
+                  <%= render 'public/stages/rate_average', stage: stage %>
+                <% end %>
+              <% else %>
+                <div class="text-center py-3">登録された公演はありません</div>
               <% end %>
             </div>
           </div>
