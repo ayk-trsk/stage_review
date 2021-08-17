@@ -2,21 +2,7 @@
   <% comment_user = comment.user %>
   <div class="border-top py-3">
     <div class="d-flex">
-      <div class="user-image">
-        <% if comment.user.is_deleted == false %>
-          <%= link_to attachment_image_tag(comment_user, :image, format: 'jpeg', fallback: "no_image.jpg"), user_path(comment_user) %>
-        <% else %>
-          <%= image_tag('no_image.jpg') %>
-        <% end %>
-      </div>
-      <div class="ml-3">
-        <% if comment.user.is_deleted == false %>
-          <%= link_to comment_user.name, user_path(comment_user) %>さん
-        <% else %>
-          退会済みユーザー
-        <% end %>
-        <p class="small text-secondary mt-1"><%= comment.created_at.strftime("%Y年%-m月%-d日") %></p>
-      </div>
+      <%= render 'public/reviews/username', review: review %>
       <div class="ml-auto">
         <% if current_user == comment_user || admin_signed_in? %>
         	<%= link_to '削除', review_comment_path(comment.review_id, comment.id), class: 'btn-sm btn-dark', method: :delete, remote: true, "data-confirm" => "コメントを削除しますか？" %>

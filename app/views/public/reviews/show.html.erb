@@ -1,23 +1,7 @@
 <div class="container">
   <div class="row px-3">
     <div class="col-md-8 mx-auto mt-4 bg-white p-4">
-      <div class="d-flex">
-        <div class="user-image">
-          <% if @review.user.is_deleted == false %>
-            <%= link_to attachment_image_tag(@review.user, :image, format: 'jpeg', fallback: "no_image.jpg"), user_path(@review.user) %>
-          <% else %>
-            <%= image_tag('no_image.jpg') %>
-          <% end %>
-        </div>
-        <div class="ml-3">
-          <% if @review.user.is_deleted == false %>
-            <%= link_to @review.user.name, user_path(@review.user) %>さん
-          <% else %>
-            退会済みユーザー
-          <% end %>
-          <p class="small text-secondary mt-1"><%= @review.created_at.strftime("%Y年%-m月%-d日") %></p>
-        </div>
-      </div>
+      <%= render 'username', review: @review %>
       <div class="mt-1"><strong><%= link_to @review.stage.name, stage_path(@review.stage_id) %></strong></div>
       <div class="d-flex align-items-center mt-1">
         <div id="star-rate-<%= @review.id %>"></div>

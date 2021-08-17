@@ -1,23 +1,7 @@
     <% reviews.each do |review| %>
       <div class="px-1 py-4 px-md-4 border-bottom">
         <% unless current_page?("/users/#{review.user.id}") %>
-          <div class="d-flex">
-            <div class="user-image">
-              <% if review.user.is_deleted == false %>
-                <%= link_to attachment_image_tag(review.user, :image, format: 'jpeg', fallback: "no_image.jpg"), user_path(review.user) %>
-              <% else %>
-                <%= image_tag('no_image.jpg') %>
-              <% end %>
-            </div>
-            <div class="ml-3">
-              <% if review.user.is_deleted == false %>
-                <%= link_to review.user.name, user_path(review.user) %>さん
-              <% else %>
-                退会済みユーザー
-              <% end %>
-              <p class="small text-secondary mt-1"><%= review.created_at.strftime("%Y年%-m月%-d日") %></p>
-            </div>
-          </div>
+          <%= render 'public/reviews/username', review: review %>
         <% end %>
         <% unless params[:stage_id] || current_page?("/stages/#{review.stage.id}") %>
           <div class="mt-1"><strong><%= link_to review.stage.name, stage_path(review.stage_id) %></strong></div>
