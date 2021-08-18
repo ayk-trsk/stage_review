@@ -7,7 +7,7 @@ class Stage < ApplicationRecord
   validate :end_date_check
 
   def end_date_check
-    errors.add(:end_date, "は公演開始日と同じ日または遅い日を選択してください") if self.start_date >= self.end_date
+    errors.add(:end_date, "は公演開始日と同じ日または遅い日を選択してください") if start_date.present? && end_date.present? && self.start_date > self.end_date
   end
 
   def bookmarked_by?(user)
