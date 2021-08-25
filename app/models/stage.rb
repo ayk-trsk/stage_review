@@ -17,4 +17,7 @@ class Stage < ApplicationRecord
   def stage_id_and_name
     self.id.to_s + '. ' + self.name
   end
+
+  scope :stages_now, -> { where("start_date <= ?", Date.today).where("end_date >= ?", Date.today) }
+  scope :stages_coming, -> { where("start_date > ?", Date.today) }
 end
