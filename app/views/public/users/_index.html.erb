@@ -1,13 +1,9 @@
 <% @users.each do |user| %>
-  <div class="py-3 border-bottom">
+  <div class="py-2 border-bottom">
     <div class="d-flex align-items-center">
       <div class="user-image"><%= attachment_image_tag user, :image, format: 'jpeg', fallback: "no_image.jpg" %></div>
       <div class="ml-3">
         <%= link_to user.name, user_path(user) %>
-        <div class="small text-secondary mt-1">
-          <%= user.followings.where(is_deleted: false).count %> フォロー
-          　<%= user.followers.where(is_deleted: false).count %> フォロワー
-        </div>
       </div>
       <div class="ml-auto">
         <% if user_signed_in? && user != current_user %>
