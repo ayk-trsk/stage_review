@@ -10,7 +10,7 @@
         <% end %>
       </ul>
       <% if @stages_now.count > 4 %>
-        <div class="text-center"><%= link_to 'もっと見る', stages_path(sort: 'now'), class: "btn btn-outline-dark mt-2" %></div>
+        <div class="text-center"><%= link_to 'もっと見る', stages_path(sort: 'now'), class: "btn btn-outline-dark mt-3" %></div>
       <% end %>
     </div>
     <div class="col-md-6 mt-5 pl-md-2" style="padding: 0;">
@@ -21,7 +21,7 @@
         <% end %>
       </ul>
       <% if @stages_coming.count > 4 %>
-        <div class="text-center"><%= link_to 'もっと見る', stages_path(sort: 'coming'), class: "btn btn-outline-dark mt-2" %></div>
+        <div class="text-center"><%= link_to 'もっと見る', stages_path(sort: 'coming'), class: "btn btn-outline-dark mt-3" %></div>
       <% end %>
     </div>
     <div class="col-12 my-5">
